@@ -65,28 +65,17 @@ th, td {
     font-size: 16px; /* Размер шрифта для ячеек таблицы */
     font-weight: normal; /* Вес шрифта для ячеек таблицы */
 }
+/* Общие стили таблицы */
 
 td {
-    padding: 10px;
+    width: 14.28%; /* Фиксированная ширина для каждой ячейки дня недели (1/7 от 100%) */
+    padding: 0; /* Убираем внутренние отступы */
+    vertical-align: top;
+    position: relative;
+    border: 1px solid #ccc;
 }
 
-.date {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 14px; /* Размер шрифта для даты */
-    font-weight: normal; /* Вес шрифта для даты */
-}
-
-.day {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 14px; /* Размер шрифта для дня недели */
-    font-weight: normal; /* Вес шрифта для дня недели */
-}
-
-
+/* Стили для почасовой разметки */
 .hourly-schedule {
     display: flex;
     flex-direction: column;
@@ -99,13 +88,18 @@ td {
     align-items: center;
     border-bottom: 1px solid #ccc; /* Светло-серая линия для разделения часов */
     padding: 5px;
-    min-height: 40px; /* Минимальная высота для каждого часового блока */
+    height: 40px; /* Фиксированная высота для каждого часового блока */
+    overflow: hidden;
+    position: relative;
+    width: 100%; /* Добавляем ширину 100%, чтобы занимало всю ячейку */
+    box-sizing: border-box; /* Включаем padding в ширину */
 }
 
 .hour-label {
     font-size: 12px; /* Размер шрифта для времени */
     color: #666; /* Цвет для времени */
     flex-shrink: 0; /* Фиксируем размер времени, чтобы оно не сжималось */
+    width: 40px; /* Фиксируем ширину для метки времени */
 }
 
 .plans {
@@ -113,13 +107,15 @@ td {
     margin-left: 10px;
     padding: 5px;
     border: 1px solid #ccc;
-    min-height: 20px;
+    height: 100%;
+    max-height: 100%; /* Ограничиваем высоту по размеру блока */
     background-color: #f9f9f9;
-    overflow-wrap: break-word;
+    overflow-y: auto; /* Добавляем вертикальную прокрутку */
     font-size: 14px; /* Размер шрифта для планов */
-    font-weight: normal; /* Вес шрифта для планов */
+    word-wrap: break-word; /* Перенос слов для длинных заметок */
     background-color: #f9f9f9;
     outline: none; /* Убираем стандартную рамку при редактировании */
+    width: calc(100% - 50px); /* Ограничиваем ширину, чтобы было место для времени */
 }
 
 .plans:focus {
